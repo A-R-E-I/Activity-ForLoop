@@ -1,5 +1,6 @@
 window.addEventListener("load",addListener);
-let Whatquestion = 0
+let Whatquestion = 0, tally = 0, sum = 0 
+var GradeAmount	
 function addListener()
 {
 	document.getElementById("txtDisplay").disabled = true;
@@ -22,17 +23,24 @@ function QuestionSelect()
 			break;
 			
 		case 2:
-			let sum = 0
+			GradeInput = document.getElementById("txtInputnum").value;
 			for(let i=0; i < GradeAmount; i++)
 				{	
-					
-					GradeInput = document.getElementById("txtInputnum").value;
 					sum = parseInt(sum) + parseInt(GradeInput);
 					GradeInput = 0;
-					document.getElementById("txtInputnum").value = "";
-					
+					document.getElementById("txtInputnum").value = null;
 				}
-			document.getElementById("txtDisplay").value = sum;
+			tally = parseInt(tally) + 1
+			if(tally <= GradeAmount)
+			{
+				Calculate = sum / GradeAmount
+				Average = Calculate / 100
+				Average = Average * 4
+			}
+			else
+			{
+				document.getElementById("txtDisplay").value = Average;
+			}
 			break;
 	}
 	
