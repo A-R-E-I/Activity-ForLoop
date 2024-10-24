@@ -30,19 +30,23 @@ function QuestionSelect()
 					GradeInput = 0;
 					document.getElementById("txtInputnum").value = null;
 				}
-			tally = parseInt(tally) + 1
-			if(tally <= GradeAmount)
-			{
-				Calculate = sum / GradeAmount
-				Average = Calculate / 100
-				Average = Average * 4
-			}
-			else
-			{
-				document.getElementById("txtDisplay").value = Average;
-			}
+				
+			ResultAvg(GradeAmount)
 			break;
 	}
 	
 }
+
+function ResultAvg(Gradenum)
+{
+	tally = tally + 1;
+	if(tally == Gradenum)
+		{
+			Calculate = sum / Gradenum
+			Average = Calculate / 100
+			Average = Average * 4
+			document.getElementById("txtDisplay").value = Average;
+		}
+}
+
 
