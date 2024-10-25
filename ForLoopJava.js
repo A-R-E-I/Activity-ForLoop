@@ -1,6 +1,6 @@
 window.addEventListener("load",addListener);
 let Whatquestion = 0, tally = 0, sum = 0 
-var GradeAmount	
+var GradeAmount, GradeInput	
 function addListener()
 {
 	document.getElementById("txtDisplay").disabled = true;
@@ -9,6 +9,7 @@ function addListener()
 
 function QuestionSelect()
 { 
+	document.getElementById("txtInputnum").focus();
 	if(Whatquestion < 2)
 	{
 		Whatquestion = Whatquestion + 1;
@@ -18,12 +19,13 @@ function QuestionSelect()
 	{
 		case 1:
 			GradeAmount = document.getElementById("txtInputnum").value;
-			document.getElementById("txtInputnum").value = " ";
-			document.getElementById("numofgrades").textContent = "Enter Grade:";
+			Check(GradeAmount);
 			break;
 			
 		case 2:
 			GradeInput = document.getElementById("txtInputnum").value;
+			Check(GradeInput);
+			
 			for(let i=0; i < GradeAmount; i++)
 				{	
 					sum = parseInt(sum) + parseInt(GradeInput);
@@ -47,6 +49,22 @@ function ResultAvg(Gradenum)
 			Average = Average * 4
 			document.getElementById("txtDisplay").value = Average;
 		}
+}
+
+function Check(numEnter)
+{
+	Modnum = numEnter % 1
+	if(Modnum != 0 || numEnter < 0 || numEnter > 100 || numEnter == "")
+	{
+		numEnter = " ";
+		document.getElementById("txtInputnum").value = " ";
+		alert("Please enter a whole number from 0 - 100")	
+	}
+	else
+	{
+		document.getElementById("numofgrades").textContent = "Enter Grade:";
+		document.getElementById("txtInputnum").value = " ";
+	}
 }
 
 
